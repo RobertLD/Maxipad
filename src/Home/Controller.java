@@ -1,9 +1,12 @@
 package Home;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.GridPane;
 
 import static java.lang.Character.isUpperCase;
 
@@ -16,6 +19,9 @@ public class Controller {
     // textarea and shift button variables
     @FXML private TextArea pad;
     @FXML private ToggleButton buttonShift;
+    @FXML private GridPane buttonGrid;
+    @FXML private ToggleButton buttonKeyboard;
+    @FXML private SplitPane splitPane;
 
     // buttons o'boy
     @FXML private Button buttonA;
@@ -307,6 +313,14 @@ public class Controller {
             } else{
                 buttons[i].setText(buttons[i].getText().toUpperCase());
             }
+        }
+
+    }
+    @FXML protected void handleButtonKeyboard(ActionEvent event){
+        if(buttonKeyboard.isSelected()){
+            buttonGrid.setVisible(true);
+        } else {
+            buttonGrid.setVisible(false);
         }
 
     }

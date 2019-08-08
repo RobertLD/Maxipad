@@ -19,17 +19,17 @@
       <Rectangle height="${page.height}" width="${page.width}" />
    </clip>
    <children>
-      <SplitPane dividerPositions="0.06675062972292191, 0.4596977329974811" layoutY="24.0" prefHeight="661.0" prefWidth="796.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+      <SplitPane dividerPositions="0.06675062972292191, 0.4596977329974811" layoutY="24.0" prefHeight="661.0" prefWidth="796.0" style="-fx-background-color: #B0A295;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <items>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #282828;">
                <children>
-                  <VBox layoutX="-7.0" layoutY="7.0" prefHeight="659.0" prefWidth="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox layoutX="-7.0" layoutY="7.0" prefHeight="659.0" prefWidth="50.0" style="-fx-background-color: #0C0032;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ToggleButton mnemonicParsing="false">
+                        <ToggleButton fx:id="buttonKeyboard" mnemonicParsing="false" onAction="#handleButtonKeyboard" style="-fx-background-color: #66FCF1;">
                            <graphic>
                               <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../images/keyboard.png" />
+                                    <Image url="@../images/keyboard.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -38,9 +38,9 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #282828;">
                <children>
-                  <GridPane prefHeight="683.0" prefWidth="415.0" style="-fx-background-color: #5DDB94;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <GridPane fx:id="buttonGrid" prefHeight="683.0" prefWidth="415.0" style="-fx-background-color: #5DDB94;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -625,7 +625,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="683.0" prefWidth="96.0">
+            <AnchorPane prefHeight="683.0" prefWidth="96.0" style="-fx-background-color: #282828;">
                <children>
                   <TextArea fx:id="pad" editable="false" opacity="0.93" prefHeight="683.0" prefWidth="571.0" promptText="Maxipad Version: 0.0.1      &#10;&#10;Begin writing..." wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
