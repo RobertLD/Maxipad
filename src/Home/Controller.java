@@ -1,88 +1,133 @@
 package Home;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.ToggleButton;
 
+import static java.lang.Character.isUpperCase;
+
+@SuppressWarnings("all") // temporary to avoid nasty, stupid, ugly yellow lines from taking up my workspace
 public class Controller {
-    @FXML private TextArea pad;
 
-    @FXML protected void handleButtonA(ActionEvent event){
-        pad.appendText("a");
-    }
+    // hold value of current shift mode
+    boolean shiftToggle = false;
+
+    // textarea and shift button variables
+    @FXML private TextArea pad;
+    @FXML private ToggleButton buttonShift;
+
+    // buttons o'boy
+    @FXML private Button buttonA;
+    @FXML private Button buttonB;
+    @FXML private Button buttonC;
+    @FXML private Button buttonD;
+    @FXML private Button buttonE;
+    @FXML private Button buttonF;
+    @FXML private Button buttonG;
+    @FXML private Button buttonH;
+    @FXML private Button buttonI;
+    @FXML private Button buttonJ;
+    @FXML private Button buttonK;
+    @FXML private Button buttonL;
+    @FXML private Button buttonM;
+    @FXML private Button buttonN;
+    @FXML private Button buttonO;
+    @FXML private Button buttonP;
+    @FXML private Button buttonQ;
+    @FXML private Button buttonR;
+    @FXML private Button buttonS;
+    @FXML private Button buttonT;
+    @FXML private Button buttonU;
+    @FXML private Button buttonV;
+    @FXML private Button buttonW;
+    @FXML private Button buttonX;
+    @FXML private Button buttonY;
+    @FXML private Button buttonZ;
+
+
+// collection of letter handling
+
+    /* Yes I understand that the buttons are handled in two different ways. One uses a hardcoded
+     * value set within the handle function that matches up with the button and the other just grabs
+     * text directly from the button text display. This makes it incredibly easy to toggle shift on the
+     * alphabetic characters, and for the others? It's simply not required, so I ain't doin' it!
+     */
+    @FXML protected void handleButtonA(ActionEvent event){ pad.appendText(buttonA.getText()); }
     @FXML protected void handleButtonB(ActionEvent event){
-        pad.appendText("b");
+        pad.appendText(buttonB.getText());
     }
     @FXML protected void handleButtonC(ActionEvent event){
-        pad.appendText("c");
+        pad.appendText(buttonC.getText());
     }
     @FXML protected void handleButtonD(ActionEvent event){
-        pad.appendText("d");
+        pad.appendText(buttonD.getText());
     }
     @FXML protected void handleButtonE(ActionEvent event){
-        pad.appendText("e");
+        pad.appendText(buttonE.getText());
     }
     @FXML protected void handleButtonF(ActionEvent event){
-        pad.appendText("f");
+        pad.appendText(buttonF.getText());
     }
     @FXML protected void handleButtonG(ActionEvent event){
-        pad.appendText("g");
+        pad.appendText(buttonG.getText());
     }
     @FXML protected void handleButtonH(ActionEvent event){
-        pad.appendText("h");
+        pad.appendText(buttonH.getText());
     }
     @FXML protected void handleButtonI(ActionEvent event){
-        pad.appendText("i");
+        pad.appendText(buttonI.getText());
     }
     @FXML protected void handleButtonJ(ActionEvent event){
-        pad.appendText("j");
+        pad.appendText(buttonJ.getText());
     }
     @FXML protected void handleButtonK(ActionEvent event){
-        pad.appendText("k");
+        pad.appendText(buttonK.getText());
     }
     @FXML protected void handleButtonL(ActionEvent event){
-        pad.appendText("l");
+        pad.appendText(buttonL.getText());
     }
     @FXML protected void handleButtonM(ActionEvent event){
-        pad.appendText("m");
+        pad.appendText(buttonM.getText());
     }
     @FXML protected void handleButtonN(ActionEvent event){
-        pad.appendText("n");
+        pad.appendText(buttonN.getText());
     }
     @FXML protected void handleButtonO(ActionEvent event){
-        pad.appendText("o");
+        pad.appendText(buttonO.getText());
     }
     @FXML protected void handleButtonP(ActionEvent event){
-        pad.appendText("p");
+        pad.appendText(buttonP.getText());
     }
     @FXML protected void handleButtonQ(ActionEvent event){
-        pad.appendText("q");
+        pad.appendText(buttonQ.getText());
     }
     @FXML protected void handleButtonR(ActionEvent event){
-        pad.appendText("r");
+        pad.appendText(buttonR.getText());
     }
     @FXML protected void handleButtonS(ActionEvent event){
-        pad.appendText("s");
+        pad.appendText(buttonS.getText());
     }
     @FXML protected void handleButtonT(ActionEvent event){
-        pad.appendText("t");
+        pad.appendText(buttonT.getText());
     }
     @FXML protected void handleButtonU(ActionEvent event){
-        pad.appendText("u");
+        pad.appendText(buttonU.getText());
     }
     @FXML protected void handleButtonV(ActionEvent event){
-        pad.appendText("v");
+        pad.appendText(buttonV.getText());
     }
     @FXML protected void handleButtonW(ActionEvent event){
-        pad.appendText("w");
+        pad.appendText(buttonW.getText());
     }
     @FXML protected void handleButtonX(ActionEvent event){
-        pad.appendText("x");
+        pad.appendText(buttonX.getText());
     }
     @FXML protected void handleButtonY(ActionEvent event){
-        pad.appendText("y");
+        pad.appendText(buttonY.getText());
     }
     @FXML protected void handleButtonZ(ActionEvent event){
-        pad.appendText("z");
+        pad.appendText(buttonZ.getText());
     }
     @FXML protected void handleButtonZero(ActionEvent event){
         pad.appendText("0");
@@ -240,8 +285,29 @@ public class Controller {
     @FXML protected void handleButtonTab(ActionEvent event) {
         pad.appendText("\t");
     }
+    @FXML protected void handleButtonBack(ActionEvent event) {
+        if(pad.getLength() > 0) pad.setText(pad.getText(0, pad.getLength()-1));
+    }
 
+    // shift key is actually a toCapital key for the alphabetic characters
+    // TODO: Add actual shift key mechanics
     @FXML protected void handleButtonShift(ActionEvent event) {
-        // TODO: custom modifier to all keys above to match the function of shift
+        this.shiftToggle = buttonShift.isSelected();
+        // set all letters to upper/lowercase on shift toggle
+        Button[] buttons = new Button[]{
+                buttonA, buttonB,buttonC,buttonD,buttonE,buttonF,buttonG,buttonH,buttonI,
+                buttonJ,buttonK,buttonL,buttonM,buttonN,buttonO,buttonP,buttonQ,buttonR,
+                buttonS,buttonT,buttonU,buttonV,buttonW,buttonX,buttonY,buttonZ,
+        };
+        // iterate through buttons setting all their text capital/lowercase
+        for(int i = 0; i < buttons.length; i++){
+            char buttonChar = buttons[i].getText().charAt(0);
+            if(isUpperCase(buttonChar)){
+                buttons[i].setText(buttons[i].getText().toLowerCase());
+            } else{
+                buttons[i].setText(buttons[i].getText().toUpperCase());
+            }
+        }
+
     }
 }

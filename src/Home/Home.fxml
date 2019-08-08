@@ -605,7 +605,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <ToggleButton fx:id="buttonShift" onAction="#handleButtonShift" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.82" style="-fx-border-color: #05396B;" text="Shift" textFill="#05396b" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="18">
+                  <ToggleButton fx:id="buttonShift" onAction="#handleButtonShift" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.82" style="-fx-border-color: #05396B;" text="Capitalize" textFill="#05396b" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="18">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
