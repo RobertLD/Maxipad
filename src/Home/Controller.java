@@ -365,6 +365,12 @@ public class Controller {
     }
 
 
+    public void handleButtonSave(ActionEvent event) {
+    }
 
+    public void handleButtonGit(ActionEvent event) {
+    }
 
+    public void buttonPlaceholder(ActionEvent event) {
+    }
 }
