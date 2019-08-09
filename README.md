@@ -12,7 +12,7 @@ If so, continue onward...
 
 ## Installation
 
-If using a Version below 1.0.0, the installation of requires a clone of this repository
+If using a Version below 1.0.0, the installation of MaxiPad requires a clone of this repository
 
 Open your cmd prompt...
 ```bash
