@@ -32,7 +32,7 @@ If you so desire to contribute to Maxipad please follow these guidelines. If you
 
 https://github.com/firstcontributions/first-contributions 
 
-In fact, these guidelines are copied directly from their README.md,m with some modifications
+In fact, these guidelines are copied directly from their README.md with some modifications
 
 
 If you don't have git on your machine, [install it]( https://help.github.com/articles/set-up-git/).
