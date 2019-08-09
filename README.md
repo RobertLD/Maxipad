@@ -23,11 +23,16 @@ Within the cloned repo you can find the working jar in Maxipad/out/artifacts/Max
 java -jar Maxipad.jar
 ```
 *Requires Java 8+*
+
 ## Usage
 Don't
+
 ## Contributing
-If you so desire to contribute to Maxipad please follow these guidelines. If you need help with how to operate git please see:https://github.com/firstcontributions/first-contributions 
-Infact, these guidelines are copied directly from their README.md,m with some modifications
+If you so desire to contribute to Maxipad please follow these guidelines. If you need help with how to operate git please see:
+
+https://github.com/firstcontributions/first-contributions 
+
+In fact, these guidelines are copied directly from their README.md,m with some modifications
 
 
 If you don't have git on your machine, [install it]( https://help.github.com/articles/set-up-git/).
