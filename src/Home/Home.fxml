@@ -254,7 +254,7 @@
                                     <DropShadow />
                                  </effect>
                               </Label>
-                              <Label fx:id="textFieldCharacters11111111" text="0" textFill="WHITE">
+                              <Label fx:id="textFieldBabies" text="0" textFill="WHITE">
                                  <effect>
                                     <DropShadow />
                                  </effect>
@@ -274,7 +274,7 @@
                                     <DropShadow />
                                  </effect>
                               </Label>
-                              <Label fx:id="textFieldCharacters111111111" text="0" textFill="WHITE">
+                              <Label fx:id="textFieldBananas" text="0" textFill="WHITE">
                                  <effect>
                                     <DropShadow />
                                  </effect>
@@ -294,7 +294,7 @@
                                     <DropShadow />
                                  </effect>
                               </Label>
-                              <Label fx:id="textFieldCharacters1111111111" text="0" textFill="WHITE">
+                              <Label fx:id="textFieldReddit" text="0" textFill="WHITE">
                                  <effect>
                                     <DropShadow />
                                  </effect>

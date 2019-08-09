@@ -41,6 +41,9 @@ public class Controller {
     @FXML private Label textFieldLines;
     @FXML private Label textFieldParagraphs;
     @FXML private Label textFieldRandomNumber;
+    @FXML private Label textFieldBabies;
+    @FXML private Label textFieldBananas;
+    @FXML private Label textFieldReddit;
 
     // buttons o'boy
     @FXML private Button buttonA;
@@ -340,14 +343,24 @@ public class Controller {
         buttonGrid.toFront();
     }
     @FXML protected void handleButtonStats(ActionEvent event){
+        genStats dummyCalcs = new genStats();
+
+        // generate dummy statistics (they ain't smart but hopefully they fun to look at  (read in the voice of uh... Rusty Shackleford))
         textFieldCharacters.setText(Integer.toString(pad.getLength()));
-        textFieldWords.setText(Integer.toString(genStats.countWords(pad.getText())));
-        textFieldSymbols.setText(Integer.toString(genStats.countSymbols(pad.getText())));
-        textFieldATZ.setText(Integer.toString(genStats.countAlpha(pad.getText())));
-        textFieldNumbers.setText(Integer.toString(genStats.countNumber(pad.getText())));
-        textFieldLines.setText(Integer.toString(genStats.countLines(pad.getText())));
-        textFieldParagraphs.setText(Integer.toString(genStats.countParagraphs(pad.getText())));
-        textFieldRandomNumber.setText(Double.toString(genStats.getRandomNumber()));
+        textFieldWords.setText(Integer.toString(dummyCalcs.countWords(pad.getText())));
+        textFieldSymbols.setText(Integer.toString(dummyCalcs.countSymbols(pad.getText())));
+        textFieldATZ.setText(Integer.toString(dummyCalcs.countAlpha(pad.getText())));
+        textFieldNumbers.setText(Integer.toString(dummyCalcs.countNumber(pad.getText())));
+        textFieldLines.setText(Integer.toString(dummyCalcs.countLines(pad.getText())));
+        textFieldParagraphs.setText(Integer.toString(dummyCalcs.countParagraphs(pad.getText())));
+        textFieldRandomNumber.setText(Double.toString(dummyCalcs.getRandomNumber()));
+
+        dummyCalcs.calcDummy(pad.getText(),System.currentTimeMillis());
+        textFieldBabies.setText(Integer.toString(dummyCalcs.babies));
+        textFieldBananas.setText(Integer.toString(dummyCalcs.bananas));
+        textFieldBabies.setText(Integer.toString(dummyCalcs.babies));
+        textFieldReddit.setText(Integer.toString(dummyCalcs.reddit));
+
         statsPage.toFront();
     }
 
