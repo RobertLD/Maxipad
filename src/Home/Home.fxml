@@ -9,7 +9,13 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
+<!--
+First of all, XML syntax for comments blows.
+fx:id = The id that controller.java uses to access the UI element associated with this id.
+onAction "function_name" calls the respective function whenever the element is interacted with. This also applies
+to other types of actions, such as text changing in the TextArea. You can tell when a method of this type is being used because
+all function names that are called from UI elements begin with handle. Ex. handleButtonA
+-->
 
 <AnchorPane fx:id="page" prefHeight="690.0" prefWidth="821.0" style="-fx-background-color: #1F1F1F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Controller">
    <clip>
