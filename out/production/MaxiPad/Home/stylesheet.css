@@ -1,0 +1,23 @@
+.parent {
+    -fx-background-color: #ffff;
+}
+.vBox {
+    -fx-border-width: 1px 0px 0px 0px;
+    -fx-border-color: #333643;
+}
+.leftSideVbox {
+    -fx-background-color: #1F1F1F;
+}
+.menuButton {
+    -fx-background-color: #174276;
+}
+.openedMenuItem {
+    -fx-background-color: #092642;
+}
+.menuToggle:selected{
+    -fx-effect: innershadow(three-pass-box, black, 3, 0, 0, 0);
+    -fx-background-color: #1c7dd8;
+    -fx-stroke: black;
+    -fx-stroke-width: 10;
+    -fx-stroke-line-cap: butt;
+}

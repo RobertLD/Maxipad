@@ -1,12 +1,13 @@
 package Home;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 import static java.lang.Character.isUpperCase;
 
@@ -20,8 +21,26 @@ public class Controller {
     @FXML private TextArea pad;
     @FXML private ToggleButton buttonShift;
     @FXML private GridPane buttonGrid;
-    @FXML private ToggleButton buttonKeyboard;
+
     @FXML private SplitPane splitPane;
+    @FXML private StackPane stackPane;
+    @FXML private VBox statsPage;
+
+    // keyboard toggle
+    @FXML private ToggleButton buttonKeyboard;
+
+    // stats toggle
+    @FXML private ToggleButton buttonStats;
+
+    // statistics fields
+    @FXML private Label textFieldCharacters;
+    @FXML private Label textFieldWords;
+    @FXML private Label textFieldSymbols;
+    @FXML private Label textFieldATZ;
+    @FXML private Label textFieldNumbers;
+    @FXML private Label textFieldLines;
+    @FXML private Label textFieldParagraphs;
+    @FXML private Label textFieldRandomNumber;
 
     // buttons o'boy
     @FXML private Button buttonA;
@@ -316,12 +335,23 @@ public class Controller {
         }
 
     }
-    @FXML protected void handleButtonKeyboard(ActionEvent event){
-        if(buttonKeyboard.isSelected()){
-            buttonGrid.setVisible(true);
-        } else {
-            buttonGrid.setVisible(false);
-        }
 
+    @FXML protected void handleButtonKeyboard(ActionEvent event) {
+        buttonGrid.toFront();
     }
+    @FXML protected void handleButtonStats(ActionEvent event){
+        textFieldCharacters.setText(Integer.toString(pad.getLength()));
+        textFieldWords.setText(Integer.toString(genStats.countWords(pad.getText())));
+        textFieldSymbols.setText(Integer.toString(genStats.countSymbols(pad.getText())));
+        textFieldATZ.setText(Integer.toString(genStats.countAlpha(pad.getText())));
+        textFieldNumbers.setText(Integer.toString(genStats.countNumber(pad.getText())));
+        textFieldLines.setText(Integer.toString(genStats.countLines(pad.getText())));
+        textFieldParagraphs.setText(Integer.toString(genStats.countParagraphs(pad.getText())));
+        textFieldRandomNumber.setText(Double.toString(genStats.getRandomNumber()));
+        statsPage.toFront();
+    }
+
+
+
+
 }

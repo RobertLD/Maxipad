@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -14,33 +15,325 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane fx:id="page" style="-fx-background-color: #EDF5E0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Controller">
+<AnchorPane fx:id="page" prefHeight="690.0" prefWidth="821.0" style="-fx-background-color: #1F1F1F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Controller">
    <clip>
       <Rectangle height="${page.height}" width="${page.width}" />
    </clip>
    <children>
-      <SplitPane dividerPositions="0.06675062972292191, 0.4596977329974811" layoutY="24.0" prefHeight="661.0" prefWidth="796.0" style="-fx-background-color: #B0A295;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
-         <items>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #282828;">
+      <VBox prefHeight="730.0" prefWidth="106.0" stylesheets="@stylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="715.0" AnchorPane.topAnchor="-10.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #0078D4;" styleClass="style" stylesheets="@stylesheet.css" text=" Mode" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+
+            </Label>
+            <ToggleButton fx:id="buttonKeyboard" mnemonicParsing="false" onAction="#handleButtonKeyboard" prefHeight="63.0" prefWidth="106.0" selected="true" stylesheets="@stylesheet.css" toggleGroup="$menuToggle">
+               <toggleGroup>
+                  <ToggleGroup fx:id="menuToggle" />
+               </toggleGroup>
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/keyboard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+            </ToggleButton>
+            <ToggleButton fx:id="buttonStats" mnemonicParsing="false" onAction="#handleButtonStats" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/stats.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+            </ToggleButton>
+         </children>
+         <styleClass>
+            <String fx:value="leftSideVbox" />
+            <String fx:value="vBox" />
+         </styleClass>
+      </VBox>
+      <VBox layoutX="113.0" prefHeight="710.0" prefWidth="272.0" styleClass="vBox" stylesheets="@stylesheet.css">
+         <children>
+            <StackPane fx:id="stackPane" prefHeight="708.0" prefWidth="262.0">
                <children>
-                  <VBox layoutX="-7.0" layoutY="7.0" prefHeight="659.0" prefWidth="50.0" style="-fx-background-color: #0C0032;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="statsPage" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #333643;">
                      <children>
-                        <ToggleButton fx:id="buttonKeyboard" mnemonicParsing="false" onAction="#handleButtonKeyboard" style="-fx-background-color: #66FCF1;">
-                           <graphic>
-                              <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/keyboard.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </ToggleButton>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="262.0" style="-fx-background-color: #0078D4;" styleClass="style" stylesheets="@stylesheet.css" text="Statistics" textFill="WHITE">
+                           <font>
+                              <Font name="Ebrima" size="22.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Label>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Characters:  " textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldCharacters" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect></Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Words:" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldWords" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Symbols" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldSymbols" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="A-Z" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldATZ" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Numbers" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldNumbers" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Lines" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldLines" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Paragraphs" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldParagraphs" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <Separator prefWidth="200.0">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Separator>
+                        <HBox prefHeight="14.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="179.0" text="Random Number of the Day" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldRandomNumber" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="14.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="179.0" text="Babies Made Cry" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldCharacters11111111" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="14.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="179.0" text="Bananas Eaten" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldCharacters111111111" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="14.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="179.0" text="Reddit Pages Surfed" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldCharacters1111111111" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <Separator prefWidth="200.0">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Separator>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="93.0" prefWidth="283.0" text="Hate Generated" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Ebrima" size="25.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Label>
+                        <LineChart prefHeight="415.0" prefWidth="262.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                   </VBox>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #282828;">
-               <children>
-                  <GridPane fx:id="buttonGrid" prefHeight="683.0" prefWidth="415.0" style="-fx-background-color: #5DDB94;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <GridPane fx:id="buttonGrid" alignment="CENTER" prefHeight="702.0" prefWidth="272.0" scaleShape="false" styleClass="openedMenuItem" stylesheets="@stylesheet.css">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -613,7 +906,7 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Button>
-                        <ToggleButton fx:id="buttonShift" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonShift" opacity="0.82" style="-fx-border-color: #05396B;" text="Capitalize" textFill="#05396b" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="18">
+                        <ToggleButton fx:id="buttonShift" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonShift" opacity="0.82" style="-fx-border-color: #05396B;" text="Caps" textFill="#05396b" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="18">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -622,19 +915,37 @@
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="5.0" top="10.0" />
                      </padding>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </GridPane>
                </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="683.0" prefWidth="96.0" style="-fx-background-color: #282828;">
-               <children>
-                  <TextArea fx:id="pad" editable="false" opacity="0.93" prefHeight="683.0" prefWidth="571.0" promptText="Maxipad Version: 0.0.1      &#10;&#10;Begin writing..." wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </TextArea>
-               </children>
-            </AnchorPane>
-         </items>
-      </SplitPane>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </StackPane>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="379.0" layoutY="10.0" prefHeight="710.0" prefWidth="426.0" styleClass="vBox" stylesheets="@stylesheet.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="385.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <TextArea fx:id="pad" editable="false" opacity="0.53" prefHeight="736.0" prefWidth="426.0" promptText="Maxipad Version: 0.0.1      &#10;&#10;Begin writing..." wrapText="true">
+               <font>
+                  <Font name="Ebrima" size="15.0" />
+               </font>
+            </TextArea>
+         </children>
+      </VBox>
    </children>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
 </AnchorPane>
