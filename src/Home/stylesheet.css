@@ -1,6 +1,12 @@
+/*
+Fairly useless
+ */
 .parent {
     -fx-background-color: #ffff;
 }
+/*
+Gets rid of that pesky vBox border
+ */
 .vBox {
     -fx-border-width: 1px 0px 0px 0px;
     -fx-border-color: #333643;
@@ -14,6 +20,10 @@
 .openedMenuItem {
     -fx-background-color: #092642;
 }
+/*
+When a menu button is selected (as long as the menuToggle is assigned to the CSS class menuToggle below, it will update
+its properties to show that it is selected. In this case, it draws a small inner shadow and changes color
+ */
 .menuToggle:selected{
     -fx-effect: innershadow(three-pass-box, black, 3, 0, 0, 0);
     -fx-background-color: #1c7dd8;

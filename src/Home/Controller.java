@@ -17,20 +17,24 @@ public class Controller {
     // hold value of current shift mode
     boolean shiftToggle = false;
 
-    // textarea and shift button variables
+    // textarea
     @FXML private TextArea pad;
-    @FXML private ToggleButton buttonShift;
-    @FXML private GridPane buttonGrid;
 
+
+    // UI panes
     @FXML private SplitPane splitPane;
     @FXML private StackPane stackPane;
     @FXML private VBox statsPage;
+    @FXML private GridPane buttonGrid;
 
     // keyboard toggle
     @FXML private ToggleButton buttonKeyboard;
 
     // stats toggle
     @FXML private ToggleButton buttonStats;
+
+    //shift toggle
+    @FXML private ToggleButton buttonShift;
 
     // statistics fields
     @FXML private Label textFieldCharacters;
@@ -45,7 +49,7 @@ public class Controller {
     @FXML private Label textFieldBananas;
     @FXML private Label textFieldReddit;
 
-    // buttons o'boy
+    // buttons o'boy (Alphabetical)
     @FXML private Button buttonA;
     @FXML private Button buttonB;
     @FXML private Button buttonC;
@@ -313,6 +317,8 @@ public class Controller {
     @FXML protected void handleButtonTab(ActionEvent event) {
         pad.appendText("\t");
     }
+
+    // When the back button is pressed, get the pad text and subtract the last character from it.
     @FXML protected void handleButtonBack(ActionEvent event) {
         if(pad.getLength() > 0) pad.setText(pad.getText(0, pad.getLength()-1));
     }
@@ -321,7 +327,7 @@ public class Controller {
     // TODO: Add actual shift key mechanics
     @FXML protected void handleButtonShift(ActionEvent event) {
         this.shiftToggle = buttonShift.isSelected();
-        // set all letters to upper/lowercase on shift toggle
+        // list of all alphabetical buttons
         Button[] buttons = new Button[]{
                 buttonA, buttonB,buttonC,buttonD,buttonE,buttonF,buttonG,buttonH,buttonI,
                 buttonJ,buttonK,buttonL,buttonM,buttonN,buttonO,buttonP,buttonQ,buttonR,
@@ -354,7 +360,10 @@ public class Controller {
         textFieldLines.setText(Integer.toString(dummyCalcs.countLines(pad.getText())));
         textFieldParagraphs.setText(Integer.toString(dummyCalcs.countParagraphs(pad.getText())));
         textFieldRandomNumber.setText(Double.toString(dummyCalcs.getRandomNumber()));
-
+        /*
+        Generates the second set of dummy stats
+        TODO: Fix the dummy stats to display responable values
+         */
         dummyCalcs.calcDummy(pad.getText(),System.currentTimeMillis());
         textFieldBabies.setText(Integer.toString(dummyCalcs.babies));
         textFieldBananas.setText(Integer.toString(dummyCalcs.bananas));

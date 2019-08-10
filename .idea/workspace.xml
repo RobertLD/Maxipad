@@ -6,12 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Add ability to use icons">
-      <change afterPath="$PROJECT_DIR$/src/images/git.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/save.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/settings.png" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Update comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Home/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Home.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,6 +78,11 @@
       <list>
         <option value="Robert DeRienzo &lt;robert.derienzo@knights.ucf.edu&gt;" />
       </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="upgrade-ui" />
+      </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
@@ -220,7 +221,8 @@
       <workItem from="1565279425263" duration="2112000" />
       <workItem from="1565288611044" duration="3251000" />
       <workItem from="1565298912565" duration="19941000" />
-      <workItem from="1565363715597" duration="5191000" />
+      <workItem from="1565363715597" duration="6564000" />
+      <workItem from="1565457358456" duration="1053000" />
     </task>
     <task id="LOCAL-00001" summary="Add ability to use icons">
       <created>1565291248354</created>
@@ -236,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565299466724</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update comments">
+      <created>1565374798725</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1565374798725</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +269,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Add ability to use icons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ability to use icons" />
+    <MESSAGE value="Update comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update comments" />
   </component>
 </project>
