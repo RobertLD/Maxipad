@@ -10,6 +10,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
+<!--
+First of all, XML syntax for comments blows.
+fx:id = The id that controller.java uses to access the UI element associated with this id.
+onAction "function_name" calls the respective function whenever the element is interacted with. This also applies
+to other types of actions, such as text changing in the TextArea. You can tell when a method of this type is being used because
+all function names that are called from UI elements begin with handle. Ex. handleButtonA
+-->
 
 <AnchorPane fx:id="page" prefHeight="690.0" prefWidth="821.0" style="-fx-background-color: #1F1F1F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Controller">
    <clip>
@@ -170,7 +177,7 @@
                   <Insets top="3.0" />
                </VBox.margin>
             </ToggleButton>
-            <ToggleButton fx:id="buttonSettings" mnemonicParsing="false" onAction="#handleButtonGit" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle">
+            <ToggleButton fx:id="buttonSettings" mnemonicParsing="false" onAction="#handleButtonSettings" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle">
                <graphic>
                   <ImageView fitHeight="150.0" fitWidth="55.0" opacity="0.93" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -1064,8 +1071,146 @@
                         <DropShadow />
                      </effect>
                   </GridPane>
-                  <VBox fx:id="settingsPane" prefHeight="200.0" prefWidth="100.0" />
-                  <VBox fx:id="savePane" prefHeight="200.0" prefWidth="100.0" />
+                  <VBox fx:id="settingsPane" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #333643;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="262.0" style="-fx-background-color: #0078D4;" styleClass="style" stylesheets="@stylesheet.css" text="Settings" textFill="WHITE">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <font>
+                              <Font name="Ebrima" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="169.0" text="Text Color:" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <ColorPicker fx:id="textColor" onAction="#handleTextColor" prefHeight="25.0" prefWidth="81.0" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="169.0" text="Background Color:" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <ColorPicker fx:id="backgroundColor" onAction="#handleBackgroundColor" prefHeight="25.0" prefWidth="81.0" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="169.0" text="Comment Keyword:" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip fx:id="commentKeywordToolTip" text="Dictates what character or series of characters will be treated as a comment in your text area." />
+                                 </tooltip>
+                              </Label>
+                              <TextField prefHeight="25.0" prefWidth="91.0" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" prefHeight="17.0" prefWidth="249.0" text="Conway's Game of Life" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Run's Conway's game of life using all textarea characters as starting points." />
+                                 </tooltip>
+                              </CheckBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" prefHeight="17.0" prefWidth="249.0" text="Hardmode" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Run's Conway's game of life using all textarea characters as starting points." />
+                                 </tooltip>
+                              </CheckBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="169.0" text="File Extension:" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip fx:id="commentKeywordToolTip1" text="Dictates what character or series of characters will be treated as a comment in your text area." />
+                                 </tooltip>
+                              </Label>
+                              <TextField prefHeight="25.0" prefWidth="91.0" promptText=".txt" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="169.0" text="Sign w/ MaxiPad" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip fx:id="commentKeywordToolTip11" text="Dictates what character or series of characters will be treated as a comment in your text area." />
+                                 </tooltip>
+                              </Label>
+                              <ToggleButton mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="No">
+                                 <tooltip>
+                                    <Tooltip text="Empty Tooltip" />
+                                 </tooltip>
+                              </ToggleButton>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                     </children></VBox>
                </children>
                <opaqueInsets>
                   <Insets />

@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import static java.lang.Character.isUpperCase;
 
@@ -26,6 +27,7 @@ public class Controller {
     @FXML private StackPane stackPane;
     @FXML private VBox statsPage;
     @FXML private GridPane buttonGrid;
+    @FXML private VBox settingsPane;
 
     // keyboard toggle
     @FXML private ToggleButton buttonKeyboard;
@@ -35,6 +37,10 @@ public class Controller {
 
     //shift toggle
     @FXML private ToggleButton buttonShift;
+
+    // bg and text color selectors
+    @FXML private ColorPicker textColor;
+    @FXML private ColorPicker backgroundColor;
 
     // statistics fields
     @FXML private Label textFieldCharacters;
@@ -373,8 +379,21 @@ public class Controller {
         statsPage.toFront();
     }
 
+    public void handleTextColor(ActionEvent event){
+        final Color textColor = this.textColor.getValue();
+        String currentStyle = pad.getStyle();
+        pad.setStyle(currentStyle + "\n" + "-fx-text-inner-color:" + utils.toRGBCode(textColor) + ";");
+    }
+    public void handleBackgroundColor(ActionEvent event){
+        final Color backgroundColor = this.backgroundColor.getValue();
+        String currentStyle = pad.getStyle();
+        pad.setStyle(currentStyle + "\n" + "-fx-background-color:" + utils.toRGBCode(backgroundColor) + ";");
 
+    }
     public void handleButtonSave(ActionEvent event) {
+    }
+    public void handleButtonSettings(ActionEvent event) {
+        settingsPane.toFront();
     }
 
     public void handleButtonGit(ActionEvent event) {
