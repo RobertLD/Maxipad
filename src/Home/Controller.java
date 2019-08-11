@@ -1,9 +1,14 @@
 package Home;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import static java.lang.Character.isUpperCase;
 
@@ -13,11 +18,44 @@ public class Controller {
     // hold value of current shift mode
     boolean shiftToggle = false;
 
-    // textarea and shift button variables
+    // textarea
     @FXML private TextArea pad;
+
+
+    // UI panes
+    @FXML private SplitPane splitPane;
+    @FXML private StackPane stackPane;
+    @FXML private VBox statsPage;
+    @FXML private GridPane buttonGrid;
+    @FXML private VBox settingsPane;
+
+    // keyboard toggle
+    @FXML private ToggleButton buttonKeyboard;
+
+    // stats toggle
+    @FXML private ToggleButton buttonStats;
+
+    //shift toggle
     @FXML private ToggleButton buttonShift;
 
-    // buttons o'boy
+    // bg and text color selectors
+    @FXML private ColorPicker textColor;
+    @FXML private ColorPicker backgroundColor;
+
+    // statistics fields
+    @FXML private Label textFieldCharacters;
+    @FXML private Label textFieldWords;
+    @FXML private Label textFieldSymbols;
+    @FXML private Label textFieldATZ;
+    @FXML private Label textFieldNumbers;
+    @FXML private Label textFieldLines;
+    @FXML private Label textFieldParagraphs;
+    @FXML private Label textFieldRandomNumber;
+    @FXML private Label textFieldBabies;
+    @FXML private Label textFieldBananas;
+    @FXML private Label textFieldReddit;
+
+    // buttons o'boy (Alphabetical)
     @FXML private Button buttonA;
     @FXML private Button buttonB;
     @FXML private Button buttonC;
@@ -285,6 +323,8 @@ public class Controller {
     @FXML protected void handleButtonTab(ActionEvent event) {
         pad.appendText("\t");
     }
+
+    // When the back button is pressed, get the pad text and subtract the last character from it.
     @FXML protected void handleButtonBack(ActionEvent event) {
         if(pad.getLength() > 0) pad.setText(pad.getText(0, pad.getLength()-1));
     }
@@ -293,7 +333,7 @@ public class Controller {
     // TODO: Add actual shift key mechanics
     @FXML protected void handleButtonShift(ActionEvent event) {
         this.shiftToggle = buttonShift.isSelected();
-        // set all letters to upper/lowercase on shift toggle
+        // list of all alphabetical buttons
         Button[] buttons = new Button[]{
                 buttonA, buttonB,buttonC,buttonD,buttonE,buttonF,buttonG,buttonH,buttonI,
                 buttonJ,buttonK,buttonL,buttonM,buttonN,buttonO,buttonP,buttonQ,buttonR,
@@ -309,5 +349,56 @@ public class Controller {
             }
         }
 
+    }
+
+    @FXML protected void handleButtonKeyboard(ActionEvent event) {
+        buttonGrid.toFront();
+    }
+    @FXML protected void handleButtonStats(ActionEvent event){
+        genStats dummyCalcs = new genStats();
+
+        // generate dummy statistics (they ain't smart but hopefully they fun to look at  (read in the voice of uh... Rusty Shackleford))
+        textFieldCharacters.setText(Integer.toString(pad.getLength()));
+        textFieldWords.setText(Integer.toString(dummyCalcs.countWords(pad.getText())));
+        textFieldSymbols.setText(Integer.toString(dummyCalcs.countSymbols(pad.getText())));
+        textFieldATZ.setText(Integer.toString(dummyCalcs.countAlpha(pad.getText())));
+        textFieldNumbers.setText(Integer.toString(dummyCalcs.countNumber(pad.getText())));
+        textFieldLines.setText(Integer.toString(dummyCalcs.countLines(pad.getText())));
+        textFieldParagraphs.setText(Integer.toString(dummyCalcs.countParagraphs(pad.getText())));
+        textFieldRandomNumber.setText(Double.toString(dummyCalcs.getRandomNumber()));
+        /*
+        Generates the second set of dummy stats
+        TODO: Fix the dummy stats to display responable values
+         */
+        dummyCalcs.calcDummy(pad.getText(),System.currentTimeMillis());
+        textFieldBabies.setText(Integer.toString(dummyCalcs.babies));
+        textFieldBananas.setText(Integer.toString(dummyCalcs.bananas));
+        textFieldBabies.setText(Integer.toString(dummyCalcs.babies));
+        textFieldReddit.setText(Integer.toString(dummyCalcs.reddit));
+
+        statsPage.toFront();
+    }
+
+    public void handleTextColor(ActionEvent event){
+        final Color textColor = this.textColor.getValue();
+        String currentStyle = pad.getStyle();
+        pad.setStyle(currentStyle + "\n" + "-fx-text-inner-color:" + utils.toRGBCode(textColor) + ";");
+    }
+    public void handleBackgroundColor(ActionEvent event){
+        final Color backgroundColor = this.backgroundColor.getValue();
+        String currentStyle = pad.getStyle();
+        pad.setStyle(currentStyle + "\n" + "-fx-background-color:" + utils.toRGBCode(backgroundColor) + ";");
+
+    }
+    public void handleButtonSave(ActionEvent event) {
+    }
+    public void handleButtonSettings(ActionEvent event) {
+        settingsPane.toFront();
+    }
+
+    public void handleButtonGit(ActionEvent event) {
+    }
+
+    public void buttonPlaceholder(ActionEvent event) {
     }
 }

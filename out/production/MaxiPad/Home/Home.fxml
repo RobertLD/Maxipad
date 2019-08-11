@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -7,640 +9,1235 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane fx:id="page" style="-fx-background-color: #EDF5E0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Controller">
+<!--
+First of all, XML syntax for comments blows.
+fx:id = The id that controller.java uses to access the UI element associated with this id.
+onAction "function_name" calls the respective function whenever the element is interacted with. This also applies
+to other types of actions, such as text changing in the TextArea. You can tell when a method of this type is being used because
+all function names that are called from UI elements begin with handle. Ex. handleButtonA
+-->
+
+<AnchorPane fx:id="page" prefHeight="690.0" prefWidth="821.0" style="-fx-background-color: #1F1F1F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Controller">
    <clip>
       <Rectangle height="${page.height}" width="${page.width}" />
    </clip>
    <children>
-      <GridPane layoutX="-7.0" layoutY="32.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="653.0" prefWidth="796.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <VBox prefHeight="730.0" prefWidth="106.0" stylesheets="@stylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="715.0" AnchorPane.topAnchor="-10.0">
          <children>
-            <TextArea fx:id="pad" editable="false" opacity="0.93" prefHeight="653.0" prefWidth="571.0" promptText="Maxipad Version: 0.0.1      &#10;&#10;Begin writing..." wrapText="true" GridPane.columnIndex="1">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #0078D4;" styleClass="style" stylesheets="@stylesheet.css" text=" Mode" textFill="WHITE">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Ebrima" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+
+            </Label>
+            <ToggleButton fx:id="buttonKeyboard" mnemonicParsing="false" onAction="#handleButtonKeyboard" prefHeight="63.0" prefWidth="106.0" selected="true" stylesheets="@stylesheet.css" toggleGroup="$menuToggle">
+               <toggleGroup>
+                  <ToggleGroup fx:id="menuToggle" />
+               </toggleGroup>
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/keyboard.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="buttonStats" mnemonicParsing="false" onAction="#handleButtonStats" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/stats.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="buttonGit" mnemonicParsing="false" onAction="#handleButtonGit" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/git.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="buttonPlaceholder" disable="true" mnemonicParsing="false" onAction="#buttonPlaceholder" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle" visible="false">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/git.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="buttonPlaceholder1" disable="true" mnemonicParsing="false" onAction="#buttonPlaceholder" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle" visible="false">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/git.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="buttonPlaceholder2" disable="true" mnemonicParsing="false" onAction="#buttonPlaceholder" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle" visible="false">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/git.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="buttonPlaceholder3" disable="true" mnemonicParsing="false" onAction="#buttonPlaceholder" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle" visible="false">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/git.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="buttonPlaceholder4" disable="true" mnemonicParsing="false" onAction="#buttonPlaceholder" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle" visible="false">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/git.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="buttonSettings" mnemonicParsing="false" onAction="#handleButtonSettings" prefHeight="63.0" prefWidth="106.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" opacity="0.93" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/settings.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="buttonSave" mnemonicParsing="false" onAction="#handleButtonSave" prefHeight="40.0" prefWidth="96.0" stylesheets="@stylesheet.css" toggleGroup="$menuToggle">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <image>
+                        <Image url="@../images/save.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="menuToggle" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </ToggleButton>
+         </children>
+         <styleClass>
+            <String fx:value="leftSideVbox" />
+            <String fx:value="vBox" />
+         </styleClass>
+      </VBox>
+      <VBox layoutX="113.0" prefHeight="710.0" prefWidth="272.0" styleClass="vBox" stylesheets="@stylesheet.css">
+         <children>
+            <StackPane fx:id="stackPane" prefHeight="708.0" prefWidth="262.0">
+               <children>
+                  <VBox fx:id="statsPage" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #333643;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="262.0" style="-fx-background-color: #0078D4;" styleClass="style" stylesheets="@stylesheet.css" text="Statistics" textFill="WHITE">
+                           <font>
+                              <Font name="Ebrima" size="22.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Label>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Characters:  " textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldCharacters" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect></Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Words:" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldWords" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Symbols" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldSymbols" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="A-Z" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldATZ" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Numbers" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldNumbers" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Lines" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldLines" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="77.0" text="Paragraphs" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldParagraphs" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <Separator prefWidth="200.0">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Separator>
+                        <HBox prefHeight="14.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="179.0" text="Random Number of the Day" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldRandomNumber" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="14.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="179.0" text="Babies Made Cry" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldBabies" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="14.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="179.0" text="Bananas Eaten" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldBananas" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="14.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="179.0" text="Reddit Pages Surfed" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <Label fx:id="textFieldReddit" text="0" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <Separator prefWidth="200.0">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Separator>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="93.0" prefWidth="283.0" text="Hate Generated" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Ebrima" size="25.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Label>
+                        <LineChart prefHeight="415.0" prefWidth="262.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <GridPane fx:id="buttonGrid" alignment="CENTER" prefHeight="702.0" prefWidth="272.0" scaleShape="false" styleClass="openedMenuItem" stylesheets="@stylesheet.css">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="buttonA" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonA" opacity="0.86" style="-fx-border-color: #05396B;" text="a" textAlignment="CENTER" textFill="#05396b">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonB" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonB" opacity="0.86" style="-fx-border-color: #05396B;" text="b" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonC" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonC" opacity="0.86" style="-fx-border-color: #05396B;" text="c" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonD" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonD" opacity="0.86" style="-fx-border-color: #05396B;" text="d" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonE" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonE" opacity="0.86" style="-fx-border-color: #05396B;" text="e" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonF" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonF" opacity="0.86" style="-fx-border-color: #05396B;" text="f" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonG" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonG" opacity="0.86" style="-fx-border-color: #05396B;" text="g" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonH" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonH" opacity="0.86" style="-fx-border-color: #05396B;" text="h" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonI" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonI" opacity="0.86" style="-fx-border-color: #05396B;" text="i" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="2">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonJ" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonJ" opacity="0.86" style="-fx-border-color: #05396B;" text="j" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonK" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonK" opacity="0.86" style="-fx-border-color: #05396B;" text="k" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonL" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonL" opacity="0.86" style="-fx-border-color: #05396B;" text="l" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonM" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonM" opacity="0.86" style="-fx-border-color: #05396B;" text="m" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="3">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonN" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonN" opacity="0.86" style="-fx-border-color: #05396B;" text="n" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonO" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonO" opacity="0.86" style="-fx-border-color: #05396B;" text="o" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonP" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonP" opacity="0.86" style="-fx-border-color: #05396B;" text="p" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonQ" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonQ" opacity="0.86" style="-fx-border-color: #05396B;" text="q" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="4">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonR" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonR" opacity="0.86" style="-fx-border-color: #05396B;" text="r" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonS" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonS" opacity="0.86" style="-fx-border-color: #05396B;" text="s" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonT" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonT" opacity="0.86" style="-fx-border-color: #05396B;" text="t" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonU" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonU" opacity="0.86" style="-fx-border-color: #05396B;" text="u" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="5">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonV" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonV" opacity="0.86" style="-fx-border-color: #05396B;" text="v" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonW" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonW" opacity="0.86" style="-fx-border-color: #05396B;" text="w" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonX" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonX" opacity="0.86" style="-fx-border-color: #05396B;" text="x" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonY" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonY" opacity="0.86" style="-fx-border-color: #05396B;" text="y" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="6">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonZ" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonZ" opacity="0.86" style="-fx-border-color: #05396B;" text="z" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonZero" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonZero" opacity="0.86" style="-fx-border-color: #05396B;" text="0" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonOne" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonOne" opacity="0.86" style="-fx-border-color: #05396B;" text="1" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonTwo" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonTwo" opacity="0.86" style="-fx-border-color: #05396B;" text="2" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="7">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonThree" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonThree" opacity="0.86" style="-fx-border-color: #05396B;" text="3" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonFour" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonFour" opacity="0.86" style="-fx-border-color: #05396B;" text="4" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonFive" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonFive" opacity="0.86" style="-fx-border-color: #05396B;" text="5" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonSix" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonSix" opacity="0.86" style="-fx-border-color: #05396B;" text="6" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="8">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonSeven" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonSeven" opacity="0.86" style="-fx-border-color: #05396B;" text="7" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonEigth" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonEigth" opacity="0.86" style="-fx-border-color: #05396B;" text="8" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonNine" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonNine" opacity="0.86" style="-fx-border-color: #05396B;" text="9" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonPlus" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonPlus" opacity="0.86" style="-fx-border-color: #05396B;" text="+" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="9">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonMinus" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonMinus" opacity="0.86" style="-fx-border-color: #05396B;" text="-" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonDivide" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonDivide" opacity="0.86" style="-fx-border-color: #05396B;" text="/" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonMultiply" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonMultiply" opacity="0.86" style="-fx-border-color: #05396B;" text="*" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="9">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonRaise" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonRaise" opacity="0.86" style="-fx-border-color: #05396B;" text="^" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="10">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonLess" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonLess" opacity="0.86" style="-fx-border-color: #05396B;" text="&lt;" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonNot" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonNot" opacity="0.86" style="-fx-border-color: #05396B;" text="!" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonEqual" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonEqual" opacity="0.86" style="-fx-border-color: #05396B;" text="=" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="11">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonDoubleQ" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonDoubleQ" opacity="0.86" style="-fx-border-color: #05396B;" text="&quot;" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonSingleQ" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonSingleQ" opacity="0.86" style="-fx-border-color: #05396B;" text="'" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="11">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonUs" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonUs" opacity="0.86" style="-fx-border-color: #05396B;" text="_" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="11">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonQuestion" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonQuestion" opacity="0.86" style="-fx-border-color: #05396B;" text="?" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonMod" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonMod" opacity="0.86" style="-fx-border-color: #05396B;" text="\%" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="12">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonHash" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonHash" opacity="0.86" style="-fx-border-color: #05396B;" text="#" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="12">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonGreat" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonGreat" opacity="0.86" style="-fx-border-color: #05396B;" text="&gt;" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonColon" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonColon" opacity="0.86" style="-fx-border-color: #05396B;" text=":" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="13">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonSColon" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonSColon" opacity="0.86" style="-fx-border-color: #05396B;" text=";" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonTilde" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonTilde" opacity="0.86" style="-fx-border-color: #05396B;" text="~" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="13">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonApo" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonApo" opacity="0.86" style="-fx-border-color: #05396B;" text="`" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="13">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonPeriod" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonPeriod" opacity="0.86" style="-fx-border-color: #05396B;" text="." textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="14">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonComma" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonComma" opacity="0.86" style="-fx-border-color: #05396B;" text="," textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonLCurl" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonLCurl" opacity="0.86" style="-fx-border-color: #05396B;" text="{" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="14">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonRCurl" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonRCurl" opacity="0.86" style="-fx-border-color: #05396B;" text="}" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="14">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonLeftBanana" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonLeftBanana" opacity="0.86" style="-fx-border-color: #05396B;" text="(" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="15">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonRightBanana" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonRightBanana" opacity="0.86" style="-fx-border-color: #05396B;" text=")" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonFlatBananaLeft" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonFlatBananaLeft" opacity="0.86" style="-fx-border-color: #05396B;" text="[" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="15">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonFlatBananaRight" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonFlatBananaRight" opacity="0.86" style="-fx-border-color: #05396B;" text="]" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="15">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonBar" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonBar" opacity="0.86" style="-fx-border-color: #05396B;" text="|" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="16">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonSlash" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonSlash" opacity="0.86" style="-fx-border-color: #05396B;" text="\\" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="12">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonSpace" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonSpace" opacity="0.86" style="-fx-border-color: #05396B;" text="Space" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="18">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonEnter" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonEnter" opacity="0.86" style="-fx-border-color: #05396B;" text="Enter" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="18">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonTab" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonTab" opacity="0.86" style="-fx-border-color: #05396B;" text="Tab" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="18">
+                           <opaqueInsets>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <ToggleButton fx:id="buttonShift" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonShift" opacity="0.82" style="-fx-border-color: #05396B;" text="Caps" textFill="#05396b" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="18">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </ToggleButton>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="5.0" top="10.0" />
+                     </padding>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </GridPane>
+                  <VBox fx:id="settingsPane" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #333643;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="262.0" style="-fx-background-color: #0078D4;" styleClass="style" stylesheets="@stylesheet.css" text="Settings" textFill="WHITE">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <font>
+                              <Font name="Ebrima" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="169.0" text="Text Color:" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Label>
+                              <ColorPicker fx:id="textColor" onAction="#handleTextColor" prefHeight="25.0" prefWidth="81.0" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="169.0" text="Background Color:" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <ColorPicker fx:id="backgroundColor" onAction="#handleBackgroundColor" prefHeight="25.0" prefWidth="81.0" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="169.0" text="Comment Keyword:" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip fx:id="commentKeywordToolTip" text="Dictates what character or series of characters will be treated as a comment in your text area." />
+                                 </tooltip>
+                              </Label>
+                              <TextField prefHeight="25.0" prefWidth="91.0" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" prefHeight="17.0" prefWidth="249.0" text="Conway's Game of Life" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Run's Conway's game of life using all textarea characters as starting points." />
+                                 </tooltip>
+                              </CheckBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" prefHeight="17.0" prefWidth="249.0" text="Hardmode" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip text="Run's Conway's game of life using all textarea characters as starting points." />
+                                 </tooltip>
+                              </CheckBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="169.0" text="File Extension:" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip fx:id="commentKeywordToolTip1" text="Dictates what character or series of characters will be treated as a comment in your text area." />
+                                 </tooltip>
+                              </Label>
+                              <TextField prefHeight="25.0" prefWidth="91.0" promptText=".txt" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="262.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="169.0" text="Sign w/ MaxiPad" textFill="WHITE">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip fx:id="commentKeywordToolTip11" text="Dictates what character or series of characters will be treated as a comment in your text area." />
+                                 </tooltip>
+                              </Label>
+                              <ToggleButton mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="No">
+                                 <tooltip>
+                                    <Tooltip text="Empty Tooltip" />
+                                 </tooltip>
+                              </ToggleButton>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                     </children></VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </StackPane>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="379.0" layoutY="10.0" prefHeight="710.0" prefWidth="426.0" styleClass="vBox" stylesheets="@stylesheet.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="385.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <TextArea fx:id="pad" editable="false" opacity="0.53" prefHeight="736.0" prefWidth="426.0" promptText="Maxipad Version: 0.0.1      &#10;&#10;Begin writing..." wrapText="true">
+               <font>
+                  <Font name="Ebrima" size="15.0" />
                </font>
             </TextArea>
-            <GridPane style="-fx-background-color: #5DDB94;">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Button fx:id="buttonA" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonA" opacity="0.86" style="-fx-border-color: #05396B;" text="a" textAlignment="CENTER" textFill="#05396b">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonB" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonB" opacity="0.86" style="-fx-border-color: #05396B;" text="b" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonC" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonC" opacity="0.86" style="-fx-border-color: #05396B;" text="c" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonD" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonD" opacity="0.86" style="-fx-border-color: #05396B;" text="d" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonE" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonE" opacity="0.86" style="-fx-border-color: #05396B;" text="e" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="1">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonF" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonF" opacity="0.86" style="-fx-border-color: #05396B;" text="f" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonG" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonG" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="g" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonH" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonH" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="h" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonI" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonI" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="i" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="2">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonJ" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonJ" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="j" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonK" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonK" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="k" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonL" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonL" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="l" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonM" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  onAction="#handleButtonM" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="m" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="3">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonN" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  onAction="#handleButtonN" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="n" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonO" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  onAction="#handleButtonO" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="o" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonP" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  onAction="#handleButtonP" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="p" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="3">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonQ" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonQ" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="q" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="4">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonR" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  onAction="#handleButtonR" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="r" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonS" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonS" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="s" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonT" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonT" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="t" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="4">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonU" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonU" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="u" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="5">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonV" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonV" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="v" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonW" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonW" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="w" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonX" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonX" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="x" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="5">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonY" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonY" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="y" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="6">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonZ" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonZ" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="z" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonZero" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonZero"  mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="0" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="6">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonOne" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonOne" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="1" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="6">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonTwo" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonTwo" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="2" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="7">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonThree" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonThree" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="3" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonFour" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonFour" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="4" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="7">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonFive" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonFive" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="5" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="7">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonSix" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonSix" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="6" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="8">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonSeven" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonSeven"  mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="7" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonEigth" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonEigth" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="8" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="8">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonNine" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonNine" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="9" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="8">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonPlus" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  onAction="#handleButtonPlus" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="+" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="9">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonMinus" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonMinus" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="-" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonDivide" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonDivide" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="/" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="9">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonMultiply" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonMultiply" opacity="0.86" style="-fx-border-color: #05396B;" text="*" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="9">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonRaise" alignment="CENTER" onAction="#handleButtonRaise" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="^" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="10">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonLess" alignment="CENTER" onAction="#handleButtonLess"  maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="&lt;" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="10">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonNot" alignment="CENTER" onAction="#handleButtonNot" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="!" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="10">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonEqual" alignment="CENTER" onAction="#handleButtonEqual" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="=" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="11">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonDoubleQ" alignment="CENTER" onAction="#handleButtonDoubleQ" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="&quot;" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="11">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonSingleQ" alignment="CENTER" onAction="#handleButtonSingleQ" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="'" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="11">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonUs" alignment="CENTER" onAction="#handleButtonUs" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="_" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="11">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonQuestion" alignment="CENTER" onAction="#handleButtonQuestion" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="?" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="12">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonMod" alignment="CENTER" onAction="#handleButtonMod"  maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="\%" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="12">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonHash" alignment="CENTER" onAction="#handleButtonHash" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="#" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="12">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonGreat" alignment="CENTER" onAction="#handleButtonGreat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="&gt;" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonColon" alignment="CENTER" onAction="#handleButtonColon" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text=":" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="13">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonSColon" alignment="CENTER" onAction="#handleButtonSColon" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text=";" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="13">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonTilde" alignment="CENTER" onAction="#handleButtonTilde" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="~" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="13">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonApo" alignment="CENTER" onAction="#handleButtonApo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="`" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="13">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonPeriod" alignment="CENTER" onAction="#handleButtonPeriod" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="." textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="14">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonComma" alignment="CENTER" onAction="#handleButtonComma" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="," textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="14">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonLCurl" alignment="CENTER" onAction="#handleButtonLCurl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="{" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="14">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonRCurl" alignment="CENTER" onAction="#handleButtonRCurl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="}" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="14">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonLeftBanana" alignment="CENTER" onAction="#handleButtonLeftBanana" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="(" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="15">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonRightBanana" alignment="CENTER" onAction="#handleButtonRightBanana" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text=")" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="15">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonFlatBananaLeft" alignment="CENTER" onAction="#handleButtonFlatBananaLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="[" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="15">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonFlatBananaRight" alignment="CENTER" onAction="#handleButtonFlatBananaRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="]" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="3" GridPane.rowIndex="15">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonBar" alignment="CENTER" onAction="#handleButtonBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="|" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="16">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonSlash" alignment="CENTER" onAction="#handleButtonSlash" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="\\" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="12">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonSpace" alignment="CENTER" onAction="#handleButtonSpace" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="Space" textAlignment="CENTER" textFill="#05396b" GridPane.rowIndex="18">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonEnter" alignment="CENTER" onAction="#handleButtonEnter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="Enter" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="1" GridPane.rowIndex="18">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonTab" alignment="CENTER" onAction="#handleButtonTab" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.86" style="-fx-border-color: #05396B;" text="Tab" textAlignment="CENTER" textFill="#05396b" GridPane.columnIndex="2" GridPane.rowIndex="18">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <ToggleButton fx:id="buttonShift" onAction="#handleButtonShift" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.82" style="-fx-border-color: #05396B;" text="Capitalize" textFill="#05396b" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="18">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </ToggleButton>
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="10.0" right="5.0" top="10.0" />
-               </padding>
-            </GridPane>
          </children>
-      </GridPane>
-      <MenuBar layoutX="-1.0" layoutY="-2.0" prefHeight="35.0" prefWidth="398.0" style="-fx-background-color: #5CDB94;">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-         <effect>
-            <DropShadow />
-         </effect>
-         <opaqueInsets>
-            <Insets bottom="10.0" />
-         </opaqueInsets>
-      </MenuBar>
+      </VBox>
    </children>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
 </AnchorPane>
